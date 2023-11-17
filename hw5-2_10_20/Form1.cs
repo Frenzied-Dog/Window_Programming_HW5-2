@@ -212,7 +212,7 @@ namespace hw5_2_10_20 {
                     if (s.hp <= 0) {
                         MessageBox.Show($"{s.character}倒下了!");
                         team.Remove(s);
-                        turn--;
+                        if (turn == 2) turn--;
                     }
                 }
                 // Check if all Servants are dead
@@ -275,7 +275,7 @@ namespace hw5_2_10_20 {
                     if (team.Count < 2) {
                         foreach (Button b in btns) {
                             if (team.Contains(b.Tag)) continue;
-                            team.Add((Servant)b.Tag);
+                            team.Add((Servant)((Servant)b.Tag).Clone());
                             if (team.Count == 2) break;
                         }
                     }
